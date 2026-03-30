@@ -35,4 +35,9 @@ public class TODOServiceImpl implements TODOService {
             todoRepository.updateTodo(oldTodo);
         }
     }
+
+    @Override
+    public void delete(long id) {
+        todoRepository.deleteTODOById(id);
+    }
 }

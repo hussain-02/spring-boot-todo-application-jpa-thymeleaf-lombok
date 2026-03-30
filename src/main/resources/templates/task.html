@@ -2,15 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>TODO APPLICATION</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body>
-    <form action="/addTodo" method="post">
+    <h1 class="text-center">TODO APPLICATION</h1>
+    <form  class="text-center" action="/addTodo" method="post">
         <input type="text" name="taskContent" placeholder="Write Your Task" />
-        <button type="submit">ADD TODO</button>
+        <button type="submit" class="btn btn-secondary">ADD TODO</button>
     </form>
 
-    <ul>
+    <ul class="text-center">
         <li th:each="todo : ${listOfTodos}">
             <form th:action="@{/updateTodo/{id}(id = ${todo.id})}" method="post">
 
@@ -18,11 +20,11 @@
 
                 <input type="checkbox" th:checked="${todo.completionStatus}" name="completionStatus" onchange="this.form.submit()">
 
-                <button type="submit">UPDATE</button>
-
+                <button type="submit" class="btn btn-success">UPDATE</button>
             </form>
+            <a th:href="@{/deleteTodo/{id}(id = ${todo.id})}" class="btn btn-danger">Delete</a>
         </li>
     </ul>
-
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </html>

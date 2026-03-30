@@ -35,4 +35,13 @@ public class TODORepository {
     public void updateTodo(Todo oldTodo) {
         entityManager.merge(oldTodo);
     }
+
+    @Transactional
+    public void deleteTODOById(long id) {
+        Todo todo = entityManager.find(Todo.class,id);
+
+        if(todo != null){
+            entityManager.remove(todo);
+        }
+    }
 }

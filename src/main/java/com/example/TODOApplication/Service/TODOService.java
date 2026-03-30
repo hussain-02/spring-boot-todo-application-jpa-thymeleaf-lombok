@@ -10,4 +10,7 @@ public interface TODOService {
     List<Todo> getAllTodos();
 
     void updateTodo(long id, Todo todo);
+
+    void delete(long id);
+
 }
